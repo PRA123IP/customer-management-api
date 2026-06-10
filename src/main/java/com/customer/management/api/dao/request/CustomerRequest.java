@@ -1,4 +1,4 @@
-package com.customer.management.api.dao;
+package com.customer.management.api.dao.request;
 
 import com.customer.management.api.constans.AccountStatus;
 import jakarta.validation.constraints.*;

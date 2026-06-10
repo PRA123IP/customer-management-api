@@ -1,4 +1,4 @@
-package com.customer.management.api.expection;
+package com.customer.management.api.exception;
 
 public class InvalidCreditScoreException extends RuntimeException {
 

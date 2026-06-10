@@ -1,9 +1,8 @@
 package com.customer.management.api.service;
 
-import com.customer.management.api.dao.CustomerRequest;
+import com.customer.management.api.dao.request.CustomerRequest;
 import com.customer.management.api.dao.response.CustomerResponse;
-
-import java.util.List;
+import org.springframework.data.domain.*;
 import java.util.UUID;
 
 public interface CustomerService {
@@ -12,7 +11,7 @@ public interface CustomerService {
 
     CustomerResponse get(UUID id);
 
-    List<CustomerResponse> getAll();
+    Page<CustomerResponse> getAll(Pageable pageable);
 
     CustomerResponse update(UUID id,
                             CustomerRequest request);

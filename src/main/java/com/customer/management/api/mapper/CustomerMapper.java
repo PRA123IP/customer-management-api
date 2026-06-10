@@ -1,17 +1,13 @@
 package com.customer.management.api.mapper;
 
-
 import com.customer.management.api.dao.response.CustomerResponse;
 import com.customer.management.api.entity.Customer;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CustomerMapper {
 
-    private CustomerMapper() {
-    }
-
-    public static CustomerResponse toResponse(
-            Customer customer) {
-
+    public CustomerResponse toResponse(Customer customer) {
         return new CustomerResponse(
                 customer.getId(),
                 customer.getFirstName(),

@@ -1,0 +1,136 @@
+## 🤖 AI Review Prompt Used
+
+The following structured prompt was used to review the codebase:
+
+> You are a Senior Software Engineer reviewing a backend system.
+> Evaluate the code for:
+>
+> - OOP principles (SRP, encapsulation, proper class responsibilities)
+> - Clean architecture and layer separation (Controller, Service, Repository)
+> - DTO usage and data flow correctness (no entity leakage)
+> - Exception handling (custom exceptions, global handler, no silent failures)
+> - API design (REST correctness, pagination, status codes)
+> - Repository correctness and performance awareness
+> - Logging and observability practices
+> - Async usage correctness (no misuse in blocking DB flows)
+> - Code structure, naming conventions, and maintainability
+>
+> Provide:
+> 1. What is GOOD
+> 2. What is WRONG
+> 3. What should be improved for production readiness
+> 4. Final score and engineering level assessment
+
+
+# Customer Management API – Engineering Review Report
+## Project Overview
+
+This project is a Spring Boot REST API for customer management, built using a layered architecture with PostgreSQL, Spring Data JPA, DTO-based request/response handling, centralized exception management, and Dockerized deployment.
+
+---
+
+## 1. What Is Good
+
+### Architecture & Layer Separation
+
+* Clear separation between Controller, Service, Repository, Entity, DTO, and Mapper layers.
+* Business logic is properly placed in the service layer.
+* Controllers remain lightweight and focused on request handling.
+* Repository layer uses Spring Data JPA effectively.
+
+### DTO Usage
+
+* Request and response DTOs are used consistently.
+* No JPA entity exposure through API endpoints.
+* API contracts remain independent from persistence models.
+
+### Exception Handling
+
+* Custom exceptions implemented for business scenarios.
+* Global exception handling using `@RestControllerAdvice`.
+* Consistent error response structure with timestamp, status, error code, message, and path.
+
+### API Design
+
+* RESTful endpoint structure.
+* Proper use of HTTP status codes.
+* Pagination and sorting support implemented for customer listing endpoints.
+
+### Logging
+
+* Structured logging implemented using SLF4J.
+* Request lifecycle and business events are logged appropriately.
+
+### Database & Persistence
+
+* UUID-based primary keys.
+* Soft delete implementation included.
+* Repository methods support pagination and filtering.
+
+### DevOps & Deployment
+
+* Multi-stage Docker build.
+* Non-root container execution.
+* PostgreSQL container with health checks.
+* Environment-based configuration using `.env`.
+
+### API Response Consistency
+
+Standardizing all controller responses using `ResponseEntity<T>` would improve API consistency and maintainability.
+
+### Logging Optimization
+
+Some operational logs can be moved from INFO to DEBUG level to reduce log noise in production environments.
+
+---
+
+## 3. Production Readiness Assessment
+
+### Strengths
+
+* Clean layered architecture
+* DTO-based API design
+* Centralized exception handling
+* Pagination support
+* Soft delete support
+* Structured logging
+* Dockerized deployment
+* PostgreSQL integration
+
+### Remaining Enhancements
+
+* Database-level uniqueness enforcement
+* JPA auditing support
+* Additional integration and containerized tests
+* API response standardization
+
+---
+
+## 4. Engineering Assessment
+
+| Category                | Score    |
+| ----------------------- | -------- |
+| Architecture & Design   | 8.5 / 10 |
+| Code Quality            | 8.5 / 10 |
+| API Design              | 8.0 / 10 |
+| Exception Handling      | 9.0 / 10 |
+| Database Design         | 8.0 / 10 |
+| Logging & Observability | 8.0 / 10 |
+| DevOps & Deployment     | 9.0 / 10 |
+| Production Readiness    | 8.5 / 10 |
+
+### Final Score
+
+**8.5 / 10**
+
+---
+
+## 5. Engineering Level Assessment
+
+The project demonstrates a strong understanding of Spring Boot development practices, layered architecture, DTO-driven API design, exception handling, persistence management, and containerized deployment.
+
+### Assessment
+
+**Strong Mid-Level Backend Engineer (Approaching Senior Level)**
+
+The codebase is maintainable, follows industry-standard patterns, and is suitable for real-world backend development. With additional focus on database concurrency handling, auditing, testing strategy, and advanced production concerns, the implementation would align closely with Senior Backend Engineer expectations.

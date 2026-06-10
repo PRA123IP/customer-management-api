@@ -29,7 +29,7 @@ public class Customer {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 100)
     private String email;
 
     private String phoneNumber;
@@ -48,5 +48,7 @@ public class Customer {
 
     private LocalDateTime createdAt;
 
-    private boolean deleted;
+//    @Column(nullable = false)
+//    private Boolean deleted = false;
+private boolean deleted;
 }
