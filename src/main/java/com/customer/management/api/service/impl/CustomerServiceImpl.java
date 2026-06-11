@@ -62,7 +62,7 @@ public class CustomerServiceImpl
         log.info("Fetching customer by id={}", id);
 
         Customer customer =
-                repository.findById(id)
+                repository.findByIdAndDeletedFalse(id)
                         .orElseThrow(() -> {
                             log.warn("Customer not found id={}", id);
                             return new CustomerNotFoundException("Customer not found");
