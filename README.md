@@ -8,7 +8,7 @@ This project implements a clean layered architecture with Controller → Service
 
 ## 🚀 Tech Stack
 
-- Java 17+
+- Java 21
 - Spring Boot
 - Spring Data JPA
 - Gradle
