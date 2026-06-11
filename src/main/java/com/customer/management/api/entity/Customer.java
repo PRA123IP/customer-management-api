@@ -48,7 +48,5 @@ public class Customer {
 
     private LocalDateTime createdAt;
 
-//    @Column(nullable = false)
-//    private Boolean deleted = false;
-private boolean deleted;
+    private boolean deleted;
 }
